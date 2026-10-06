@@ -1,0 +1,60 @@
+{% extends 'pedidos/base.html' %}
+
+{% block titulo %}Eliminar pedido{% endblock %}
+
+{% block contenido %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card border-top border-danger border-4">
+            <div class="card-body p-4">
+                <h1 class="text-danger">Eliminar pedido</h1>
+
+                <p class="fs-5">
+                    ¿Está seguro de eliminar el pedido
+                    <strong>#{{ pedido.id }}</strong>?
+                </p>
+
+                <div class="alert alert-warning">
+                    <p class="mb-1">
+                        <strong>Cliente:</strong> {{ pedido.cliente }}
+                    </p>
+
+                    <p class="mb-1">
+                        <strong>Dirección:</strong> {{ pedido.direccion }}
+                    </p>
+
+                    <p class="mb-1">
+                        <strong>Productos:</strong>
+                        {{ pedido.descripcion_productos }}
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>Total:</strong>
+                        ${{ pedido.total|floatformat:0 }}
+                    </p>
+                </div>
+
+                <p class="text-secondary">
+                    Esta acción no se puede deshacer.
+                </p>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <button type="submit" class="btn btn-danger">
+                        Sí, eliminar pedido
+                    </button>
+
+                    <a
+                        href="{% url 'listar_pedidos' %}"
+                        class="btn btn-outline-secondary">
+                        Cancelar
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
