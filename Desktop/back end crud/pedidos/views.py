@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pedido
-from .form import PedidoCrearForm, PedidoEditarForm
+from .forms import PedidoCrearForm, PedidoEditarForm
 
 # Consultar (R - Read)
 def listar_pedidos(request):
